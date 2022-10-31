@@ -56,7 +56,7 @@ export class Server {
         let i = 0;
         let links: string[] = [];
         links.push('https://devcontrol-backend-proba1.onrender.com/test2');
-        links.push('https://dummyexpressapp1.onrender.com/dummy');
+//         links.push('https://dummyexpressapp1.onrender.com/dummy');
         links.push('https://dummyexpressapp2.onrender.com/dummy');
 
         for (let i = 0; i < links.length; i++) {
