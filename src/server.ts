@@ -19,7 +19,7 @@ export class Server {
         this.setConfig();
         this.setupRoutes();
         this.startServer();
-        this.startTimeout();
+        this.startInterval();
     }
 
     setConfig() {
@@ -37,8 +37,8 @@ export class Server {
 
     setupRoutes() {
         this.app.get('/dummy', (req: any, res: any) => {
-            console.log('request:dummy');
-            res.send('request:dummy');
+            console.log('recived GET /dummy');
+            res.send('Response from dummy1');
         });
     }
 
@@ -50,14 +50,12 @@ export class Server {
 
 
     https = require('https');
-    startTimeout() {
-
-
+    startInterval() {
         let i = 0;
         let links: string[] = [];
         links.push('https://devcontrol-backend-proba1.onrender.com/dummmy');
 //         links.push('https://dummyexpressapp1.onrender.com/dummy');
-        links.push('https://dummyexpressapp2-ojgo.onrender.com');
+        links.push('https://dummyexpressapp2-ojgo.onrender.com/dummy');
 
         for (let i = 0; i < links.length; i++) {
             this.httpGet(links[i]);
@@ -73,6 +71,7 @@ export class Server {
     }
 
     httpGet(link: string) {
+        console.log(`link: ${link}`);
         this.https.get(link, (resp) => {
             let data = '';
 
@@ -83,7 +82,7 @@ export class Server {
 
             // The whole response has been received. Print out the result.
             resp.on('end', () => {
-                console.log(data);
+                console.log(`result from ${link}: ${data}`);
             });
 
         }).on("error", (err) => {
