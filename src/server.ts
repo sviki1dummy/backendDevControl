@@ -57,7 +57,7 @@ export class Server {
         let links: string[] = [];
         links.push('https://devcontrol-backend-proba1.onrender.com/dummmy');
 //         links.push('https://dummyexpressapp1.onrender.com/dummy');
-        links.push('https://dummyexpressapp2.onrender.com/dummy');
+        links.push('https://dummyexpressapp2-ojgo.onrender.com');
 
         for (let i = 0; i < links.length; i++) {
             this.httpGet(links[i]);
