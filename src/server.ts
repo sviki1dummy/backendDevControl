@@ -49,37 +49,45 @@ export class Server {
     }
 
 
-
+    https = require('https');
     startTimeout() {
-        const https = require('https');
+
 
         let i = 0;
         let links: string[] = [];
-        links.push('https://devcontrol-backend-proba1.onrender.com/dummy');
-//         links.push('https://dummyexpressapp1.onrender.com/dummy');
+        links.push('https://devcontrol-backend-proba1.onrender.com/test2');
+        links.push('https://dummyexpressapp1.onrender.com/dummy');
         links.push('https://dummyexpressapp2.onrender.com/dummy');
 
-        let interval = (10*1000)/links.length;
+        for (let i = 0; i < links.length; i++) {
+            this.httpGet(links[i]);
+        }
+
+        let interval = (5 * 60 * 1000) / links.length;
         setInterval(async () => {
             i++;
             if (i >= links.length) i = 0;
 
-            https.get(links[i], (resp) => {
-                let data = '';
-
-                // A chunk of data has been received.
-                resp.on('data', (chunk) => {
-                    data += chunk;
-                });
-
-                // The whole response has been received. Print out the result.
-                resp.on('end', () => {
-                    console.log(data);
-                });
-
-            }).on("error", (err) => {
-                console.log("Error: " + err.message);
-            });
+            this.httpGet(links[i]);
         }, interval);
+    }
+
+    httpGet(link: string) {
+        this.https.get(link, (resp) => {
+            let data = '';
+
+            // A chunk of data has been received.
+            resp.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            // The whole response has been received. Print out the result.
+            resp.on('end', () => {
+                console.log(data);
+            });
+
+        }).on("error", (err) => {
+            console.log("Error: " + err.message);
+        });
     }
 }
