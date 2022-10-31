@@ -53,7 +53,7 @@ export class Server {
     startInterval() {
         let i = 0;
         let links: string[] = [];
-        links.push('https://devcontrol-backend-proba1.onrender.com/dummmy');
+        links.push('https://devcontrol-backend-proba1.onrender.com/dummy');
 //         links.push('https://dummyexpressapp1.onrender.com/dummy');
         links.push('https://dummyexpressapp2-ojgo.onrender.com/dummy');
 
