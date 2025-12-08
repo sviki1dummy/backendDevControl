@@ -15,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@appland/appmap-agent-js": "^9.4.3",
     "body-parser": "^2.2.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
@@ -25,6 +24,7 @@
     "firebase-admin": "^13.6.0",
     "http": "0.0.1-security",
     "nodemailer": "^7.0.11",
+    "npm": "^11.6.4",
     "source-map-loader": "^5.0.0",
     "uuid": "^13.0.0",
     "websocket": "^1.0.35"
