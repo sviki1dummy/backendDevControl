@@ -1,5 +1,5 @@
 import { IComplexFieldGroup, IComplexFieldGroupState, IDevice, IDeviceFieldBasic, IDeviceFieldButton, IDeviceFieldMultipleChoice, IDeviceFieldNumeric, IDeviceFieldRGB, IDeviceFieldText, IFieldGroup, IRGB, IUser } from "models/basicModels";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { Db } from "../firestoreDB/db";
 import { DBSingletonFactory } from "../firestoreDB/singletonService";
 import { compareFields, getComplexGroup, getComplexGroupState, getDeviceField, getDeviceFieldGroup, getFieldInComplexGroup } from "./../firestoreDB/deviceStructureFunctions";
@@ -36,7 +36,7 @@ export class DeviceService {
             }
         } else {
             while (true) {
-                deviceKey = uuid();//.replaceAll('-', '');//.substring(0,10);
+                deviceKey = uuidv4();//.replaceAll('-', '');//.substring(0,10);
                 if (!allDevices.find(o => o.deviceKey === deviceKey)) break;
             }
         }

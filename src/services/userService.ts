@@ -5,7 +5,7 @@ import { DBSingletonFactory } from "../firestoreDB/singletonService";
 import { ISOToUNIX, getCurrentTimeISO, getCurrentTimeUNIX, hasTimePASSED } from "../generalStuff/timeHandlers";
 import { ILoginResponse } from "models/API/loginRegisterReqRes";
 import { IAuthToken, IUser } from "models/basicModels";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 export class UserService {
 
@@ -136,7 +136,7 @@ export class UserService {
     }
 
     async sendEmailConfirmation_registration(id: number, username: String, email: string) {
-        let hashCode = uuid();
+        let hashCode = uuidv4();
         await this.emailService.sendRegistrationEmail(username, email, hashCode);
 
         let emailConfirmationData: IEmailConfirmationData = {
@@ -148,7 +148,7 @@ export class UserService {
     }
 
     async sendEmailConfirmation_addEmail(id: number, username: String, email: string) {
-        let hashCode = uuid();
+        let hashCode = uuidv4();
         await this.emailService.sendAddEmailEmail(username, email, hashCode);
 
         let emailConfirmationData: IEmailConfirmationData = {
@@ -203,7 +203,7 @@ export class UserService {
     async createForgotPasswordRequest(userId: number, username: string, email: string) {
         let request: IForgotPasswordData = {
             userId: userId,
-            hashCode: uuid(),
+            hashCode: uuidv4(),
             timeStamp: getCurrentTimeISO(),
         }
         await this.emailService.sendForgotPasswordEmail(username, email, request.hashCode);

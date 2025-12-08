@@ -2,7 +2,7 @@ import { IAuthToken, IComplexFieldGroup, IComplexFieldGroupState, IDevice, IDevi
 import { FirestoreDB } from "./firestore";
 import { firestoreSingletonFactory } from "./singletonService";
 import { transformDeviceData, transformUserRights } from "./dataTransformations";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { addDaysToCurrentTime } from "../generalStuff/timeHandlers";
 import { IUserRight, IUserRightComplexGroup, IUserRightDevice, IUserRightField, IUserRightGroup } from "../models/userRightsModels";
 import { IEmailConfirmationData, IForgotPasswordData } from "../emailService/emailModels";
@@ -88,7 +88,7 @@ export class Db {
     //<TOKENs>
     async generateAndSaveNewToken(userId: number, firebaseToken?: string): Promise<IAuthToken> {
 
-        const newAuthToken = uuid().replace('-', '');
+        const newAuthToken = uuidv4().replace('-', '');
         const authToken: IAuthToken = {} as IAuthToken;
 
         authToken.authToken = newAuthToken;

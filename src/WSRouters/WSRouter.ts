@@ -1,7 +1,7 @@
 import { IWSSMessage, IWSSBasicConnection, IWSSConnectionDevice, IWSSConnectionUser, IWSSDeviceConnectRequest, IWSSUserConnectRequest } from 'models/WSS/wssConnectionReqRes';
 import { server, request, connection, Message } from 'websocket';
 import { addDeviceConnection, addUserConnection } from './subrouter/WSConnect';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import { getCurrentTimeISO, getCurrentTimeUNIX } from '../generalStuff/timeHandlers';
 import { IDevice, IUser } from 'models/basicModels';
 import { ERightType } from '../models/userRightsModels';
@@ -44,7 +44,7 @@ export class MyWebSocketServer {
             let connection = request.accept(null, request.origin);
             let newConnection: IWSSBasicConnection = {
                 connection: connection,
-                connectionUUID: uuid(),
+                connectionUUID: uuidv4(),
                 startedAt: getCurrentTimeISO(),
             };
             this.allClients.push(newConnection);
