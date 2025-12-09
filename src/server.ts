@@ -1,7 +1,5 @@
 // import * as BodyParser from 'body-parser';
 import * as Express from 'express';
-import { server as webSocketServer } from 'websocket';
-import { v4 as uuid } from 'uuid';
 let http = require('http');
 let cors = require('cors');
 
@@ -11,7 +9,6 @@ export class Server {
     port = process.env.PORT || 8000;
 
     private app: Express.Application;
-    private wsServer: webSocketServer;
     server: any;
 
     constructor() {
@@ -24,9 +21,6 @@ export class Server {
 
     setConfig() {
         this.server = http.createServer(this.app);
-        this.wsServer = new webSocketServer({
-            httpServer: this.server,
-        });
 
         var bodyParser = require('body-parser');
 

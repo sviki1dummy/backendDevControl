@@ -1,2 +1,6 @@
 *node_modules
 firebaseKey.json
+firebaseKey_testing.json
+src/emailService/emailKey_email.json
+src/emailService/emailKey_password.json
+src/serverData.json
